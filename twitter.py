@@ -9,6 +9,13 @@ from rich.console import Console
 from rich.spinner import Spinner
 from rich.live import Live
 
+def getuserid(username, bearer):
+    url = f"https://api.x.com/2/users/by/username/{username}"
+    headers = {"Authorization": f"Bearer {bearer}"}
+    r = get(url, headers=headers)
+    data = r.json().get("data", {})
+    return data.get("id")
+
 
 class Retweeter:
     def __init__(self, query, lang):
@@ -22,7 +29,9 @@ class Retweeter:
         self.access_token = config["twitter"]["access_token"]
         self.access_secret = config["twitter"]["access_secret"]
         self.bearer = config["twitter"]["bearer_token"]
-        self.user_id = config["twitter"]["userid"]
+
+        username = config["twitter"]["username"]
+        self.user_id = getuserid(username, self.bearer)
 
         self.auth = OAuth1(
             self.consumer_key,
@@ -79,6 +88,7 @@ class Retweeter:
 
         except Exception:
             sleep(60)
+
 
 basicConfig(filename='paia.log', level=10, format='%(asctime)s %(message)s')
 
