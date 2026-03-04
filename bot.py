@@ -90,7 +90,7 @@ class Retweeter:
             sleep(60)
 
 
-basicConfig(filename='paia.log', level=10, format='%(asctime)s %(message)s')
+basicConfig(filename='logs.log', level=10, format='%(asctime)s %(message)s')
 
 parser = ArgumentParser()
 parser.add_argument("--query", required=True)
