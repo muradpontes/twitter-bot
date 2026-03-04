@@ -12,7 +12,7 @@ o script faz uma busca, retweeta o primeiro tweet disponível e repete o process
 - filtra por idioma opcional (`--lang`)
 - armazena tweets pendentes localmente
 - retweeta automaticamente
-- log de operações em `paia.log`
+- log de operações em `logs.log`
 - interface visual com `rich`
 - agendamento automático via `schedule`
 
